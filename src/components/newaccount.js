@@ -56,7 +56,7 @@ const newaccount = () => {
         </label>
         <label>
           <input
-            required=""
+            required
             placeholder="Confirm password"
             type="password"
             className="input"
