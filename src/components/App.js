@@ -1,19 +1,30 @@
 import React from 'react'
 import '../styles/App.css'
 
-import mobile from "../assets/mobile.jpeg";
+// import mobile from "../assets/mobile.jpeg";
 // import hr from "../assets/24.jpg";
 import img1 from "../assets/images.jpg";
 import img2 from "../assets/images.png";
-// import app2 from "../assets/app2.jpg";
-// import app from "../assets/app.jpg";
+import app2 from "../assets/app2.jpeg";
+import app from "../assets/app.jpeg";
 // import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+
+import styled from "styled-components";
+const Hr = styled.hr`
+width: 20%;
+text-align: left;
+margin-left: 0;
+height: 5px;
+background-color: red;
+`;
+
 const App = () => {
   return (
     <div class="helpymoto-container">
-      <div class="helpymoto-title">
+      {/* <div class="helpymoto-title">
     <h1>Download HelpyMoto App</h1>
   </div>
   <div class="helpymoto-content">
@@ -27,14 +38,14 @@ const App = () => {
         <img src={img2} alt="mobile" />
       </div>
     </div>
-  </div>
-      {/* App part
+  </div> */}
+      {/* App part */}
       <div>
-        <Hr></Hr>
+      <Hr></Hr>
 
         <Row style={{ Width: "100%" }}>
           <Col> <div>
-            <img src={app} style={{ borderRadius: "30px", boxShadow: "4px 4px 4px 4px rgb(0,0,0,0.2)", height: "50%", width: "83%", border: "2px solid  black" }} />
+            <img alt ="app mobile" src={app} style={{ borderRadius: "30px", boxShadow: "4px 4px 4px 4px rgb(0,0,0,0.2)", height: "50%", width: "83%", border: "2px solid  black" }} />
           </div>
           </Col>
           <Col >
@@ -45,10 +56,10 @@ const App = () => {
 
                 <div style={{ display: "flex", padding: '5px' }}>
                   <div>
-                    <img src={img1} style={{ height: '50px', cursor: 'pointer', margin: '0px 50px' }} />
+                    <img alt ="app mobile" src={img1} style={{ height: '50px', cursor: 'pointer', margin: '0px 50px' }} />
                   </div>
                   <div>
-                    <img src={img2} style={{ height: '53px', cursor: 'pointer' }} />
+                    <img alt ="app mobile" src={img2} style={{ height: '53px', cursor: 'pointer' }} />
                   </div>
                 </div>
                 <br></br>
@@ -59,16 +70,18 @@ const App = () => {
           </Col>
 
           <Col> <div >
-            <img src={app2} style={{ borderRadius: "30px", boxShadow: "4px 4px 4px 4px rgb(0,0,0,0.2)", height: "96%", width: "83%", border: "2px solid  black" }} />
+            <img alt ="app mobile" src={app2} style={{ borderRadius: "30px", boxShadow: "4px 4px 4px 4px rgb(0,0,0,0.2)", height: "96%", width: "83%", border: "2px solid  black" }} />
           </div>
           </Col>
         </Row>
 
-
-
-
         <Hr></Hr>
-      </div> */}
+
+
+
+
+  
+      </div>
     </div>
 
   )
