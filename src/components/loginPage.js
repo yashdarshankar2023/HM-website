@@ -53,13 +53,12 @@ const LoginPage = () => {
             <label htmlFor="username">Email</label>
             <input type="text" name="email" id="username" value={email} onChange={e => {
               setemail(e.target.value)
-              // console.log(email,password)
               const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
               setIsValid(emailRegex.test(e.target.value));
-
               setData({ email: e.target.value, password: password })
 
-            }} required />
+            }} 
+            required />
 
           </div>
           <div className="input-group">
