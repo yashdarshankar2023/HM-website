@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/mechanic_list.css";
 import Popup from './Popup';
-import Plumber from "../assets/plumber-holding-something.jpg";
+import Plumber from "../assets/cars2.jpg";
 
 
 
@@ -10,9 +10,11 @@ const Mechanic_list = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isaccepted, setIsaccepted] = useState(false);
     const [mechdata, setmechdata] = useState([])
+    const [index,setindex] = useState(0)
 
-    const togglePopup = () => {
+    const togglePopup = (i) => {
         setIsOpen(!isOpen);
+        setindex(i);
 
     }
     const closepop = () => {
@@ -27,7 +29,6 @@ const Mechanic_list = () => {
 
 
     // };
-    const data_hospital = { "_id": { "$oid": "6386ff3f377dfdcf319dd8dd" }, "name": "hospitalA", "application_id": "110011", "vacancy": "32", "contact": "7899216543", "password": "Hospital@12345", "general_bed": "10", "icu_bed": "9", "oxygen_bed": "12", "ventilator_bed": "8", "link": "https://medicaldialogues.in/h-upload/2022/08/30/184686-hospital-1.webp", "general_bed_av": "3", "icu_bed_av": "1", "oxygen_bed_av": "2", "ventilator_bed_av": "3", "v_bed": "11", "v_bed_av": "2" }
 
     useEffect(() => {
         fetch("https://service-provider-apis.onrender.com/api/v1/mechanics", {
@@ -57,7 +58,7 @@ const Mechanic_list = () => {
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                     </svg>
-                    <b style={{ marginLeft: "60px" }}>Rishab Jain</b>
+                    <b style={{ marginLeft: "60px" }}>{mechdata[index].fullName}</b>
 
                     <b style={{ marginLeft: "160px" }}> Himalayat nagar, </b>
                     <b style={{ marginLeft: "90px" }}>Hyderabad,Telangana.</b>
@@ -128,6 +129,7 @@ const Mechanic_list = () => {
 
             </div> */}
             <div class="hover-table-layout">
+                
 
 
 
@@ -143,7 +145,7 @@ const Mechanic_list = () => {
                                 <h4><b>Email : </b>{d.email}</h4>
                                 <h4><b>Mobile : </b>{d.phoneNo}</h4>
                                 
-                                <h4><button type="button" class="button" onClick={togglePopup}>Book Now</button></h4>
+                                <h4><button type="button" class="button"  onClick={() => togglePopup(i)} >Hire Now</button></h4>
 
                             </div>
 

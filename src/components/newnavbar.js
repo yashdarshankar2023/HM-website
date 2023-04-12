@@ -190,8 +190,8 @@ const Navbar = () => {
                     <input type="text" required="required" />
                     <span>Issue</span>
                   </div>
-
-                  <button className="enter">Hire Now</button>
+                  <Link to="/mechlist"><button className="enter">Hire Now</button></Link>
+                  
                 </div>
               </form>
             </div>
