@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../styles/mechanic_list.css";
 import Popup from './Popup';
+import Plumber from "../assets/plumber-holding-something.jpg";
+
 
 
 
 const Mechanic_list = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isaccepted, setIsaccepted] = useState(false);
+    const [mechdata, setmechdata] = useState([])
 
     const togglePopup = () => {
         setIsOpen(!isOpen);
@@ -24,6 +27,26 @@ const Mechanic_list = () => {
 
 
     // };
+    const data_hospital = { "_id": { "$oid": "6386ff3f377dfdcf319dd8dd" }, "name": "hospitalA", "application_id": "110011", "vacancy": "32", "contact": "7899216543", "password": "Hospital@12345", "general_bed": "10", "icu_bed": "9", "oxygen_bed": "12", "ventilator_bed": "8", "link": "https://medicaldialogues.in/h-upload/2022/08/30/184686-hospital-1.webp", "general_bed_av": "3", "icu_bed_av": "1", "oxygen_bed_av": "2", "ventilator_bed_av": "3", "v_bed": "11", "v_bed_av": "2" }
+
+    useEffect(() => {
+        fetch("https://service-provider-apis.onrender.com/api/v1/mechanics", {
+            method: "GET",
+            headers: {
+                Authentication: `Bearer ${undefined}`,
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("this is data", data.mechanic);
+                setmechdata(data.mechanic);
+            })
+            .then((json) => console.log(json))
+            .catch((error) => console.log(error));
+
+    });
 
     return (
         <div style={{ textAlign: "center" }}>
@@ -74,118 +97,67 @@ const Mechanic_list = () => {
             />}
             <br />
             <br />
-            <h1 style={{ color: "#5D5FEF" }}>List of mechanics</h1>
-            <button onClick={closepop} style={{ marginLeft: "70%" }}>if request accepted</button>
+            {/* <h1 style={{ color: "#5D5FEF" }}>List of mechanics</h1>
+            <button onClick={closepop} style={{ marginLeft: "70%" }}>if request accepted</button> */}
 
             <br />
             <br />
-            <div className='mech_list_container'>
-                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
+            {/* <div className='mech_list_container'>
+
+            
+                {mechdata.map((d, i) => 
+                    <div>
+                        <p><b>Name: </b>{d.fullName}</p>
+                        <p><b>ID :</b> {d.mechanicUid}</p>
+                        <p><b>Mobile:</b> {d.phoneNo}</p>
+                        <p><b>Email : </b>{d.email}</p>
+                        <button onClick={togglePopup}>Hire mechanic</button>
 
 
 
-                </div>
-                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
+                    </div>
+
+                
 
 
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>                <div>
-                    <p>Name: Yash Ajay Darshankar</p>
-                    <p>Rating: 5</p>
-                    <p>Location: nanded</p>
-                    <p>Mobile: +91 1236547891</p>
-                    <button onClick={togglePopup}>Hire mechanic</button>
-
-
-
-                </div>
+                )}
 
 
 
 
 
+            </div> */}
+            <div class="hover-table-layout">
+
+
+
+                {mechdata.map((d, i) =>
+
+                    <div class="listing-item">
+                        <figure class="image">
+                            <img src={Plumber} alt="image" />
+
+                            <div class="listing">
+                                <h4><b>Name : </b>{d.fullName}</h4>
+                                <h4><b>ID : </b>{d.mechanicUid}</h4>
+                                <h4><b>Email : </b>{d.email}</h4>
+                                <h4><b>Mobile : </b>{d.phoneNo}</h4>
+                                
+                                <h4><button type="button" class="button" onClick={togglePopup}>Book Now</button></h4>
+
+                            </div>
+
+
+
+
+                        </figure>
+
+                    </div>
+                    
+
+
+
+                )}
             </div>
         </div>
     )
