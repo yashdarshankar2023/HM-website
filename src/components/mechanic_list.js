@@ -41,7 +41,7 @@ const Mechanic_list = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log("this is data", data.mechanic);
+                console.log("this is data", data);
                 setmechdata(data.mechanic);
             })
             .then((json) => console.log(json))
@@ -74,7 +74,7 @@ const Mechanic_list = () => {
 
                     </div>
                     <br /><br />
-                    <button style={{ backgroundColor: "#5D5FEF", color: "White", borderRadius: "5px", marginLeft: "5%", width: "90%", height: "50px" }} onClick={togglePopup}>Submit</button>
+                    <button className='popup-submit-button' onClick={togglePopup}>Submit</button>
                 </>}
                 handleClose={togglePopup}
 
