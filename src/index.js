@@ -27,6 +27,8 @@ import GotoCart from "./components/goto_cart";
 import Tracking from "./components/service_tracking";
 import Track from "./components/service_tracking_details";
 import Dropdown from "./components/dropdown";
+import Dashboard from "./components/dashboard";
+
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -59,6 +61,8 @@ export default function Index() {
         <Route path="/tracking" element={<Tracking />} />
         <Route path="/track" element={<Track />} />
         <Route path="/dropdown" element={<Dropdown />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        
         {/* <Route path="/CreateAnAccount" element={<CreateAnAccount/>} /> */}
       </Routes>
     </BrowserRouter>
