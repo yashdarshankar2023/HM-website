@@ -16,7 +16,7 @@ const LoginPage = () => {
     if (isValid && isValidpassword) {
       console.log('Email submitted: ', email);
       console.log(data);
-      fetch("https://9690-115-187-37-90.in.ngrok.io/api/v1/user/login", {
+      fetch("https://service-provider-apis.onrender.com/api/v1/user/login/web", {
         method: "POST",
         headers: {
           Authentication: `Bearer ${undefined}`,

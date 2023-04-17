@@ -5,22 +5,50 @@ import Plumber from "../assets/cars2.jpg";
 
 
 
-
+const initialData = { mechanicId: "", customerId: "" }
 const Mechanic_list = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isaccepted, setIsaccepted] = useState(false);
     const [mechdata, setmechdata] = useState([])
-    const [index,setindex] = useState(0)
+    const [index, setindex] = useState(0)
+    const [mechSubmitData, setmechSubmitData] = useState(initialData)
 
     const togglePopup = (i) => {
         setIsOpen(!isOpen);
         setindex(i);
+        setmechSubmitData({ mechanicId: mechdata[i].mechanicUid, customerid: " " })
 
     }
     const closepop = () => {
 
         setIsaccepted(!isaccepted);
     }
+
+    const submithandler = (e) => {
+        e.preventDefault();
+
+        fetch("https://service-provider-apis.onrender.com/api/v1/ticket/mechanic/create", {
+            method: "POST",
+            headers: {
+                Authentication: `Bearer ${undefined}`,
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(mechSubmitData),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Error Request");
+                }
+                console.log(response)
+                return response.json();
+            })
+            .then((json) => console.log(json))
+            .catch((error) => console.log(error));
+
+
+    }
+
 
 
     // const handleClick = () => {
@@ -74,7 +102,16 @@ const Mechanic_list = () => {
 
                     </div>
                     <br /><br />
-                    <button className='popup-submit-button' onClick={togglePopup}>Submit</button>
+                    <button className='popup-submit-button' 
+                    onClick={e => {
+                        setIsOpen(!isOpen);
+                        setmechSubmitData({ mechanicId: mechdata[index].mechanicUid, customerid: " " })
+                        console.clear()
+                        console.log(mechSubmitData)
+                        alert("Your request is submitted")
+
+                      }}
+                    >Submit</button>
                 </>}
                 handleClose={togglePopup}
 
@@ -129,7 +166,7 @@ const Mechanic_list = () => {
 
             </div> */}
             <div class="hover-table-layout">
-                
+
 
 
 
@@ -144,8 +181,8 @@ const Mechanic_list = () => {
                                 <h4><b>ID : </b>{d.mechanicUid}</h4>
                                 <h4><b>Email : </b>{d.email}</h4>
                                 <h4><b>Mobile : </b>{d.phoneNo}</h4>
-                                
-                                <h4><button type="button" class="button"  onClick={() => togglePopup(i)} >Hire Now</button></h4>
+
+                                <h4><button type="button" class="button" onClick={() => togglePopup(i)} >Hire Now</button></h4>
 
                             </div>
 
@@ -155,7 +192,7 @@ const Mechanic_list = () => {
                         </figure>
 
                     </div>
-                    
+
 
 
 
